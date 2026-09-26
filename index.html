@@ -1,1 +1,285 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shloka Sharma | Profile</title>
+  <style>
+    :root {
+      --bg: #0b0b10;
+      --card: rgba(255,255,255,.07);
+      --card-border: rgba(255,255,255,.12);
+      --text: #f7f7fb;
+      --muted: #aaaab8;
+      --accent: #9b7cff;
+      --accent2: #ff72b6;
+      --shadow: 0 24px 70px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(155,124,255,.22), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(255,114,182,.16), transparent 25%),
+        var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1080px, 92%); margin: auto; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(11,11,16,.72);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    nav .inner {
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .logo span { color: var(--accent); }
+    .links { display: flex; gap: 24px; color: var(--muted); font-size: .92rem; }
+    .links a:hover { color: white; }
+    .hero {
+      min-height: 82vh; display: grid; place-items: center; padding: 80px 0 50px;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.35fr .65fr; gap: 60px; align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; padding: 7px 12px; border: 1px solid var(--card-border);
+      border-radius: 999px; color: #d9d2ff; background: rgba(155,124,255,.08);
+      font-size: .82rem; margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(3.1rem, 8vw, 6.4rem); line-height: .95;
+      letter-spacing: -.07em; margin: 0 0 22px;
+    }
+    h1 .gradient {
+      background: linear-gradient(100deg, #fff, #bba8ff 48%, #ff9dcc);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { color: var(--muted); font-size: 1.12rem; max-width: 650px; }
+    .buttons { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 18px; border-radius: 12px; border: 1px solid var(--card-border);
+      background: rgba(255,255,255,.06); transition: .2s; font-weight: 650;
+    }
+    .btn.primary { background: white; color: #101014; border-color: white; }
+    .btn:hover { transform: translateY(-2px); }
+    .profile-card {
+      padding: 28px; border: 1px solid var(--card-border); border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.035));
+      box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .profile-card::before {
+      content: ""; position: absolute; width: 180px; height: 180px; border-radius: 50%;
+      background: var(--accent); filter: blur(70px); opacity: .25; top: -70px; right: -60px;
+    }
+    .avatar {
+      width: 105px; height: 105px; border-radius: 50%; display: grid; place-items: center;
+      font-size: 2.2rem; font-weight: 850;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 12px 35px rgba(155,124,255,.3); margin-bottom: 22px;
+    }
+    .profile-card h2 { margin: 0 0 4px; font-size: 1.45rem; }
+    .profile-card .role { color: var(--muted); }
+    .facts { margin-top: 24px; display: grid; gap: 12px; }
+    .fact {
+      display: flex; justify-content: space-between; gap: 20px;
+      padding-bottom: 11px; border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: .9rem;
+    }
+    .fact span:first-child { color: var(--muted); }
+    section { padding: 75px 0; }
+    .section-label { color: var(--accent); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .16em; }
+    h2.section-title { font-size: clamp(2rem, 4vw, 3.1rem); margin: 8px 0 35px; letter-spacing: -.045em; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      border: 1px solid var(--card-border); border-radius: 20px; padding: 24px;
+      background: var(--card); transition: .2s;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(155,124,255,.4); }
+    .card h3 { margin: 0 0 8px; }
+    .card p { color: var(--muted); margin: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+    .tag {
+      padding: 7px 10px; border-radius: 9px; background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08); color: #ddd;
+      font-size: .82rem;
+    }
+    .timeline { border-left: 1px solid rgba(255,255,255,.15); padding-left: 25px; }
+    .timeline-item { position: relative; margin-bottom: 30px; }
+    .timeline-item::before {
+      content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%;
+      background: var(--accent); left: -30px; top: 9px; box-shadow: 0 0 18px var(--accent);
+    }
+    .timeline-item .date { color: var(--accent); font-size: .8rem; font-weight: 750; }
+    .timeline-item h3 { margin: 5px 0; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+    .cta {
+      text-align: center; padding: 55px 25px; border-radius: 28px;
+      background: linear-gradient(135deg, rgba(155,124,255,.16), rgba(255,114,182,.10));
+      border: 1px solid var(--card-border);
+    }
+    .cta h2 { font-size: 2.4rem; margin: 0 0 10px; letter-spacing: -.04em; }
+    .cta p { color: var(--muted); margin-bottom: 24px; }
+    footer { padding: 30px 0 45px; color: #777785; font-size: .85rem; text-align: center; }
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+      .hero { padding-top: 55px; }
+      .grid { grid-template-columns: 1fr; }
+      .links { display: none; }
+      h1 { font-size: clamp(3rem, 17vw, 5rem); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container inner">
+    <a class="logo" href="#home">S<span>.</span></a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#journey">Journey</a>
+      <a href="#goals">Goals</a>
+    </div>
+  </div>
+</nav>
+
+<main id="home">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">B.E. IT Student · Mumbai · 2nd Year</div>
+        <h1>Hi, I'm <span class="gradient">Shloka.</span></h1>
+        <p>
+          A curious engineering student building her skills in technology, problem solving,
+          public speaking and creative projects — while figuring out what she wants to build next.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#about">Explore profile</a>
+          <a class="btn" href="#goals">My goals →</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="avatar">S</div>
+        <h2>Shloka Sharma</h2>
+        <div class="role">B.E. Information Technology</div>
+        <div class="facts">
+          <div class="fact"><span>College</span><strong>TCET, Mumbai</strong></div>
+          <div class="fact"><span>Year</span><strong>2nd Year</strong></div>
+          <div class="fact"><span>Focus</span><strong>Tech + Creativity</strong></div>
+          <div class="fact"><span>Currently</span><strong>Learning & Building</strong></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-label">01 · About</div>
+      <h2 class="section-title">A little about me.</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>🎓 Student</h3>
+          <p>Currently pursuing B.E. in Information Technology at Thakur College of Engineering and Technology.</p>
+        </article>
+        <article class="card">
+          <h3>🎨 Creative</h3>
+          <p>Interested in design, college creative work, visual ideas and making projects look polished rather than messy.</p>
+        </article>
+        <article class="card">
+          <h3>🎤 Communicator</h3>
+          <p>Working toward becoming a stronger public speaker and taking part in debates, speeches and presentations.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">02 · Skills</div>
+      <h2 class="section-title">What I'm working with.</h2>
+      <div class="card">
+        <p>My current learning stack and areas of interest:</p>
+        <div class="tags">
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+          <span class="tag">Data Structures</span>
+          <span class="tag">Algorithms</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">UI / Design</span>
+          <span class="tag">Public Speaking</span>
+          <span class="tag">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="container">
+      <div class="section-label">03 · Journey</div>
+      <h2 class="section-title">Where I'm headed.</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">NOW · 2026</div>
+          <h3>Second Year — Information Technology</h3>
+          <p>Strengthening programming, data structures, databases, Git/GitHub and core engineering fundamentals.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="date">NEXT</div>
+          <h3>Build real projects</h3>
+          <p>Turn concepts into small working projects, participate in hackathons and build a portfolio that shows actual work.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="date">LONG TERM</div>
+          <h3>Tech + Communication</h3>
+          <p>Combine technical ability with speaking, leadership, creativity and strong professional presence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <div class="container">
+      <div class="section-label">04 · Goals</div>
+      <h2 class="section-title">The bigger picture.</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>💻 Technical Growth</h3>
+          <p>Become genuinely strong at coding, DSA, development and software projects.</p>
+        </article>
+        <article class="card">
+          <h3>🚀 Opportunities</h3>
+          <p>Explore hackathons, competitions, internships, higher studies and meaningful college opportunities.</p>
+        </article>
+        <article class="card">
+          <h3>✨ Personal Brand</h3>
+          <p>Build a strong profile through projects, achievements, communication skills and consistent work.</p>
+        </article>
+      </div>
+
+      <div class="cta" style="margin-top: 45px;">
+        <h2>Still building. Still learning.</h2>
+        <p>This profile is a starting point — add your projects, links and achievements as your journey grows.</p>
+        <a class="btn primary" href="mailto:your-email@example.com">Let's connect</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Shloka Sharma · Built as a single HTML file.
+</footer>
+
+</body>
+</html>
